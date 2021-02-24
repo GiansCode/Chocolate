@@ -20,6 +20,7 @@ public class RedisManager {
     
     private PubSubListener psListener;
     
+    private String redisPassword;
     @Getter private String proxyName;
     @Getter private int onlinePlayers;
     
@@ -30,6 +31,7 @@ public class RedisManager {
      */
     public void enable() {
         JsonObject redisConfig = plugin.getConfig().getObject().getAsJsonObject("redis");
+        redisPassword = redisConfig.has("password") ? redisConfig.get("password").getAsString() : null;
         pool = new JedisPool(new JedisPoolConfig(), redisConfig.get("hostname").getAsString(), redisConfig.get("port").getAsInt());
 
         psListener = new PubSubListener(plugin);
@@ -192,7 +194,10 @@ public class RedisManager {
     }
     
     private Jedis getConnection() {
-        return pool.getResource();
+        Jedis jedis = pool.getResource();
+        if (redisPassword != null && !redisPassword.isEmpty())
+            jedis.auth(redisPassword);
+        return jedis;
     }
     
 }
