@@ -36,7 +36,7 @@ public class RedisManager {
 
         psListener = new PubSubListener(plugin);
         try (Jedis jedis = getConnection()) {
-            jedis.subscribe(psListener);
+            jedis.subscribe(psListener, "chocolate");
         }
         
         proxyName = plugin.getConfig().getObject().get("proxyName").getAsString();
