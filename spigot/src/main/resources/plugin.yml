@@ -1,0 +1,6 @@
+name: Chocolate
+version: ${project.version}
+main: io.alerium.chocolate.ChocolatePlugin
+api-version: 1.16
+authors: [ VertCode, xQuickGlare ]
+description: The placeholderapi hook for Chocolate
