@@ -60,8 +60,11 @@ public abstract class ChocolateCommand implements SimpleCommand, CommandMeta {
         ));
     }
 
+    private static final LegacyComponentSerializer sectionRGB = LegacyComponentSerializer.builder().character('&')
+            .hexCharacter('#').hexColors().build();
+
     protected void sendMessage(CommandSource commandSource, String msg) {
-        commandSource.sendMessage(LegacyComponentSerializer.legacySection().deserialize(StringUtils.getInstance().colorize(msg)));
+        commandSource.sendMessage(sectionRGB.deserialize(StringUtils.getInstance().colorize(msg)));
     }
 
 }

@@ -62,33 +62,21 @@ public class ChocolatePlugin {
 
     @Subscribe
     public void onProxyInitialization(ProxyInitializeEvent event) {
-        this.printLogo();
-        this.logToConsole("&fLoading configs...");
         this.config = VertConfigs.getInstance().getConfig(new File(this.dataFolder, "config.json"),
                 this.getClass().getClassLoader().getResourceAsStream("config.json"));
         this.langLoader = new EnumConfigLoader(new File(this.getDataFolder(), "lang.json"), Lang.class);
-        this.logToConsole("&fConfigs loaded.");
 
-        this.logToConsole("&fLoading redis...");
         this.redisManager = new RedisManager();
         if (!this.redisManager.initialize()) return;
-        this.logToConsole("&fLoaded redis.");
 
-        this.logToConsole("&fLoading instances...");
         this.loadInstances();
-        this.logToConsole("&fLoaded instances.");
 
-        this.logToConsole("&fLoading listeners...");
         this.loadListeners();
-        this.logToConsole("&fLoaded listeners.");
 
-        this.logToConsole("&fLoading Commands...");
         this.commandRegister = new CommandRegister(this);
         this.commandRegister.initialize();
-        this.logToConsole("&fLoaded Commands.");
 
         this.successfullyStarted = true;
-        this.logToConsole("&aSuccessfully started the Chocolate plugin.");
     }
 
     @Subscribe
@@ -106,16 +94,6 @@ public class ChocolatePlugin {
     private void loadInstances() {
         this.syncManager = new SyncManager(this.redisManager.getRedissonClient(), this);
         this.cacheManager = new CacheManager(this.syncManager);
-    }
-
-    private void printLogo() {
-        this.logToConsole("&c\n" +
-                "_________ .__                        .__          __          \n" +
-                "\\_   ___ \\|  |__   ____   ____  ____ |  | _____ _/  |_  ____  \n" +
-                "/    \\  \\/|  |  \\ /  _ \\_/ ___\\/  _ \\|  | \\__  \\\\   __\\/ __ \\ \n" +
-                "\\     \\___|   Y  (  <_> )  \\__(  <_> )  |__/ __ \\|  | \\  ___/ \n" +
-                " \\______  /___|  /\\____/ \\___  >____/|____(____  /__|  \\___  >\n" +
-                "        \\/     \\/            \\/                \\/          \\/ ");
     }
 
     public void logToConsole(String msg) {
