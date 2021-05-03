@@ -1,0 +1,31 @@
+{
+  "redis": {
+    "hostname": "localhost",
+    "port": 6379,
+    "password": ""
+  },
+  
+  "proxyName": "proxy1",
+  
+  "messages": {
+    "glist_global": "<green>There are <players> on the network</green>",
+    "glist_no_proxy": "<red>Proxy not found</red>",
+    "glist_proxy": "<green>There are <players> on the <proxy> proxy</green>",
+    
+    "find_usage": "<red>Usage: /find <player></red>",
+    "find_player_not_found": "<red>Player not found</red>",
+    "find_found": "<green>Player found on server <server> and on proxy <proxy></green>",
+    
+    "last_seen_usage": "<red>Usage: /lastseen <player></red>",
+    "last_seen_player_not_found": "<red>Player not found</red>",
+    "last_seen_already_online": "<red>This players is online</red>",
+    "last_seen_time": "Last online time: <time>",
+    
+    "ip_usage": "<red>Usage: /ip <player></red>",
+    "ip_player_not_found": "<red>Player not found</red>",
+    "ip_player_not_online": "<red>Player not online</red>",
+    "ip_data": "<green>IP: <ip></green>",
+    
+    "server_id": "<green>You are on proxy <proxy></green>"
+  }
+}
