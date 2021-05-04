@@ -1,6 +1,7 @@
 package io.alerium.chocolate;
 
 import io.alerium.chocolate.cache.CacheManager;
+import io.alerium.chocolate.hook.PAPIExpansion;
 import io.alerium.chocolate.listener.MessageListener;
 import io.alerium.chocolate.listener.PlayerListener;
 import lombok.Getter;
@@ -29,5 +30,6 @@ public final class ChocolatePlugin extends JavaPlugin {
         this.cacheManager = new CacheManager();
         Bukkit.getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
         Bukkit.getServer().getMessenger().registerIncomingPluginChannel(this, "Chocolate", new MessageListener(this));
+        new PAPIExpansion(this).register();
     }
 }
