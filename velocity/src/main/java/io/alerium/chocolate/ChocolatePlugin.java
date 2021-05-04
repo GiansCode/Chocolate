@@ -12,6 +12,7 @@ import eu.vertcode.vertconfig.object.VertConfig;
 import io.alerium.chocolate.command.constructor.CommandRegister;
 import io.alerium.chocolate.config.Lang;
 import io.alerium.chocolate.config.loader.EnumConfigLoader;
+import io.alerium.chocolate.listener.PluginMessageListener;
 import io.alerium.chocolate.listener.RedisMessageListener;
 import io.alerium.chocolate.listener.StartingListener;
 import io.alerium.chocolate.listener.TabCompleteListener;
@@ -89,6 +90,7 @@ public class ChocolatePlugin {
         this.server.getEventManager().register(this, new StartingListener());
         this.server.getEventManager().register(this, new RedisMessageListener());
         this.server.getEventManager().register(this, new TabCompleteListener(this));
+        this.server.getEventManager().register(this, new PluginMessageListener(this));
     }
 
     private void loadInstances() {

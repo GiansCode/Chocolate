@@ -5,7 +5,6 @@ Simple player synchronisation solution for servers running multiple Velocity pro
 ### Features
 
 ---
-
 - Player Data Sync for multiple proxies
 - Player Count Sync for multiple proxies
 - Alert Sync for multiple proxies
