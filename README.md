@@ -2,6 +2,19 @@
 
 Simple player synchronisation solution for servers running multiple Velocity proxies
 
+### Features
+
+---
+
+- Player Data Sync for multiple proxies
+- Player Count Sync for multiple proxies
+- Alert Sync for multiple proxies
+- Hex & ChatColor Support
+
+**Hex Format:** `&#HEX_CODE`
+
+**ChatColor Format:** `&a-zA-Z0-9`
+
 ### Commands
 
 ---
