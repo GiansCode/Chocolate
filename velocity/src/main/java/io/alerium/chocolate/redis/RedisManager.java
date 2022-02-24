@@ -36,7 +36,7 @@ public class RedisManager {
             proxyId = chocolatePlugin.getConfig().getString("proxyName", "proxy1");
             return true;
         } catch (Exception ex) {
-            chocolatePlugin.logToConsole("&4Couldn't initialize redis connection.");
+            chocolatePlugin.logToConsole("&4Couldn't initialize redis connection.",ex);
             chocolatePlugin.getServer().shutdown();
             return false;
         }

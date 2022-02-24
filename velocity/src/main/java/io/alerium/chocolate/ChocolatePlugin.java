@@ -102,4 +102,8 @@ public class ChocolatePlugin {
         this.server.getConsoleCommandSource().sendMessage(LegacyComponentSerializer.legacySection().deserialize(StringUtils.getInstance()
                 .colorize(msg)));
     }
+
+    public void logToConsole(String msg, Exception ex) {
+        this.logger.error(msg, ex);
+    }
 }
