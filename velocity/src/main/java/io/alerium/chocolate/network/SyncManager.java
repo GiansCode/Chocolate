@@ -39,11 +39,12 @@ public class SyncManager {
             return thread;
         });
 
-        Iterator<UUID> iterator = getOnlinePlayersInProxy(this.proxyId).iterator();
-        while (iterator.hasNext()) cleanPlayer(iterator.next());
-
         this.executorService.scheduleAtFixedRate(this::runSyncTask, 1, 1, TimeUnit.SECONDS);
         this.chocolatePlugin.getServer().getEventManager().register(chocolatePlugin, new PlayerListener(chocolatePlugin));
+    }
+
+    public void cleanPlayers(){
+        for (UUID uuid : getOnlinePlayersInProxy(this.proxyId)) cleanPlayer(uuid);
     }
 
     private void runSyncTask() {
